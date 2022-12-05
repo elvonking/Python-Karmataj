@@ -85,4 +85,5 @@ data_dict = {
 }
 
 # needs to be fixed to show all the jobs, not one repeatedly
-df = pd.DataFrame(data
+df = pd.DataFrame(data_dict, index=np.arange(len(python_job_elements)))
+print(df)
