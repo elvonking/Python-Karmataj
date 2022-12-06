@@ -56,34 +56,48 @@ python_job_elements = [
 ]
 
 # print(python_job_elements)
+jobs = []
+companies = []
+locations = []
+app_link = []
 
 # now we can see the python jobs details
 for job_element in python_job_elements:
     title_element = job_element.find("h2", class_="title")
     company_element = job_element.find("h3", class_="company")
     location_element = job_element.find("p", class_="location")
+
+    # create a list of the different items to use to creeate a dataframe later
+    jobs.append(title_element.text.strip())
+    companies.append(company_element.text.strip())
+    locations.append(location_element.text.strip())
+    
     # links = job_element.find_all("a")
     # for link in links:
     #     link_url = link["href"]
     #     print(f"Apply here: {link_url}\n")
     # this returns two links, one for learn, second for apply
-
     # we can find the appropriate (apply) link better
     link_url = job_element.find_all("a")[1]["href"]
+    app_link.append(link_url)
     print(title_element.text.strip())
     print(company_element.text.strip())
     print(location_element.text.strip())
     print(f"Apply here: {link_url}\n")
+    # print(jobs)
     print()
 
 # you can store the results you get in a pandas dataframe for further analysis
 data_dict = {
-    "title": title_element,
-    "company": company_element,
-    "location": location_element,
-    "link": link_url
+    "title": jobs,
+    "company": companies,
+    "location":locations,
+    "link": app_link
 }
 
 # needs to be fixed to show all the jobs, not one repeatedly
-df = pd.DataFrame(data_dict, index=np.arange(len(python_job_elements)))
+# df = pd.DataFrame(data_dict, index=np.arange(len(python_job_elements)))
+# print(df)
+
+df = pd.DataFrame(data_dict)
 print(df)
