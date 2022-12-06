@@ -1,4 +1,7 @@
 # Python-Karmataj
 
-This is a simple python project I made to test out my python setup works. 
-I will keep pushing any fun stuff I work on to this repo.
+This is a repo I made for pushing any fun stuff I work on.
+
+It currently has:
+###### A simple hangman game
+###### Web scraping the realpython.com fake jobs site
